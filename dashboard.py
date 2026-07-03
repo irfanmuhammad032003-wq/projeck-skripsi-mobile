@@ -50,6 +50,32 @@ html, body, [class*="css"] {
     margin: 0 auto !important;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   FIX 1 — Paksa semua kolom (st.columns) TETAP horizontal.
+   Tanpa ini, Streamlit otomatis menumpuk kolom jadi vertikal di
+   layar sempit (HP), sehingga bottom nav & grafik 2-kolom rusak.
+   ══════════════════════════════════════════════════════════════ */
+div[data-testid="stHorizontalBlock"] {
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+}
+div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
+    width: fit-content !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FIX 2 — Paksa background tetap putih/terang meskipun HP
+   memakai dark mode. (Pelengkap dari .streamlit/config.toml)
+   ══════════════════════════════════════════════════════════════ */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: #FFFFFF !important;
+}
+[data-testid="stAppViewContainer"], .main {
+    background-color: #FFFFFF !important;
+}
+
 /* ── HEADER ── */
 .mobile-header {
     background: linear-gradient(135deg,#1E40AF,#3B82F6);
