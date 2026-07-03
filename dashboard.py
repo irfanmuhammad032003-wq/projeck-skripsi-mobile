@@ -51,18 +51,28 @@ html, body, [class*="css"] {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   FIX 1 — Paksa semua kolom (st.columns) TETAP horizontal.
-   Tanpa ini, Streamlit otomatis menumpuk kolom jadi vertikal di
-   layar sempit (HP), sehingga bottom nav & grafik 2-kolom rusak.
+   FIX 1 (DIPERBAIKI) — Paksa kolom tetap horizontal TANPA bikin
+   overflow ke samping. Kuncinya: JANGAN pakai width:fit-content,
+   itu yang kemarin bikin overflow.
    ══════════════════════════════════════════════════════════════ */
+html, body {
+    overflow-x: hidden !important;
+}
+[data-testid="stAppViewContainer"] {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
 div[data-testid="stHorizontalBlock"] {
     flex-wrap: nowrap !important;
     align-items: stretch !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
 }
 div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
-    width: fit-content !important;
-    flex: 1 1 0 !important;
+    flex: 1 1 0% !important;
     min-width: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
