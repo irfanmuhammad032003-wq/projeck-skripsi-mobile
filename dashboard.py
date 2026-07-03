@@ -50,6 +50,16 @@ html, body, [class*="css"] {
     margin: 0 auto !important;
 }
 
+/* ── FIX: Paksa background tetap putih walau HP pakai dark mode ── */
+html, body,
+[data-testid="stAppViewContainer"],
+[data-testid="stApp"],
+.main,
+[data-testid="stVerticalBlockBorderWrapper"],
+[data-testid="stHeader"] {
+    background-color: #FFFFFF !important;
+}
+
 /* ══════════════════════════════════════════════════════════════
    FIX 1 (DIPERBAIKI) — Paksa kolom tetap horizontal TANPA bikin
    overflow ke samping. Kuncinya: JANGAN pakai width:fit-content,
