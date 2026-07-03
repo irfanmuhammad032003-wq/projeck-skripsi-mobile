@@ -50,52 +50,6 @@ html, body, [class*="css"] {
     margin: 0 auto !important;
 }
 
-/* ── FIX: Paksa background tetap putih walau HP pakai dark mode ── */
-html, body,
-[data-testid="stAppViewContainer"],
-[data-testid="stApp"],
-.main,
-[data-testid="stVerticalBlockBorderWrapper"],
-[data-testid="stHeader"] {
-    background-color: #FFFFFF !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   FIX 1 (DIPERBAIKI) — Paksa kolom tetap horizontal TANPA bikin
-   overflow ke samping. Kuncinya: JANGAN pakai width:fit-content,
-   itu yang kemarin bikin overflow.
-   ══════════════════════════════════════════════════════════════ */
-html, body {
-    overflow-x: hidden !important;
-}
-[data-testid="stAppViewContainer"] {
-    overflow-x: hidden !important;
-    width: 100% !important;
-}
-div[data-testid="stHorizontalBlock"] {
-    flex-wrap: nowrap !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    gap: 0.5rem !important;
-}
-div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
-    flex: 1 1 0% !important;
-    min-width: 0 !important;
-    width: 0 !important;
-    overflow: hidden !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   FIX 2 — Paksa background tetap putih/terang meskipun HP
-   memakai dark mode. (Pelengkap dari .streamlit/config.toml)
-   ══════════════════════════════════════════════════════════════ */
-[data-testid="stVerticalBlockBorderWrapper"] {
-    background-color: #FFFFFF !important;
-}
-[data-testid="stAppViewContainer"], .main {
-    background-color: #FFFFFF !important;
-}
-
 /* ── HEADER ── */
 .mobile-header {
     background: linear-gradient(135deg,#1E40AF,#3B82F6);
